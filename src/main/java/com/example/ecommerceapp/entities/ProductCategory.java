@@ -22,7 +22,6 @@ public class ProductCategory {
     @Column(name = "category_name")
     private String categoryName;
 
-//    @OneToMany(mappedBy = "product_category_id", cascade = CascadeType.ALL)
-//    @JsonIgnore
-//    private List<Product> productList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    private Set<Product> products;
 }

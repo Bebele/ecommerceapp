@@ -1,6 +1,7 @@
 package com.example.ecommerceapp.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -48,7 +49,7 @@ public class Product {
     private Date lastUpdated;
 
     @ManyToOne
-    @JoinColumn(name = "product_category_id")
-    @JsonIgnore
-    private ProductCategory productCategory;
+    @JoinColumn(name = "category_id", nullable = false)
+    @JsonIgnoreProperties("products")
+    private ProductCategory category;
 }

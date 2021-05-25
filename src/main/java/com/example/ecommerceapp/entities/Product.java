@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Set;
 
 @Data
 @Entity
@@ -52,4 +53,9 @@ public class Product {
     @JoinColumn(name = "category_id", nullable = false)
     @JsonIgnoreProperties("products")
     private ProductCategory category;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "produt_to_order")
+    private Set<Order> orders;
+
 }
